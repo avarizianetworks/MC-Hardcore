@@ -1,0 +1,2 @@
+on join:
+    set join message to "§d%player% §6hat den Server betreten."

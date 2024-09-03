@@ -1,0 +1,10 @@
+on join:
+    set tablist header of player to "%newline%                    §6Avarizia Networks §8- §cHardcore                    %newline%%newline%"
+
+every second:
+    set {_uptime} to hours of difference between now and {restart.serverstart}
+    
+    loop all players:
+        set {_survival} to hours of difference between now and {birth::%loop-player%}
+        set {_death} to {death.counter::%loop-player%}
+        set tablist footer of loop-player to "%newline%%newline%§6Stunden überlebt: §e%{_survival}%%newline%§6Tode gesamt: §e%{_death}%%newline%%newline%§6TPS: §e%tps from last 5 minutes%%newline%§6Uptime: §e%{_uptime}% Stunden%newline%§6RAM: §e%free ram% MB§8/§e%max ram%MB%newline%"

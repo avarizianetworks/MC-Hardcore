@@ -1,0 +1,26 @@
+on join:
+    if {death.counter::%player%} is not set:
+        set {death.counter::%player%} to 0 
+
+on death:
+    victim is a player
+    kick victim due to "§6Du bist gestorben! Du kannst dich in §e24 Stunden §6erneut einloggen und von vorne beginnen."
+    set {ban::%victim%} to now
+    clear {birth::%victim%}
+    add 1 to {death.counter::%victim%}
+
+
+on connect:
+    if {ban::%player%} is set:
+        set {_diff} to difference between now and {ban::%player%}
+        set {_end} to {ban::%player%} + 24 hours
+        if {_diff} is greater than 24 hours:
+            clear {ban::%player%}
+        else:
+            kick player due to "§6Du kannst noch nicht wieder spielen. Deine Sperre endet am §e%{_end}%§6."
+
+command /removeban <offlineplayer>:
+    permission: avarizia.command.removeban
+    trigger:
+        clear {ban::%arg-1%}
+        send "§6Der Spieler §e%arg-1% §6wurde entbannt."

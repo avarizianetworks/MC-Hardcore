@@ -1,0 +1,9 @@
+on join:
+    if {birth::%player%} is not set:
+        teleport player to {poi::spawn}
+
+command /setspawn:
+    permission: avarizia.command.setspawn
+    trigger:
+        set {poi::spawn} to player's location
+        send "§6Der Spawn wurde gesetzt."

@@ -1,0 +1,28 @@
+on load:
+    set {restart.timer} to 6 hours
+    set {restart.serverstart} to now
+    set {restart.active} to false
+
+every minute:
+    {restart.active} is false
+    if difference between now and {restart.serverstart} is greater than {restart.timer}:
+        set {restart.active} to true
+        broadcast "§6Der Server wird in §e1 Minute §6neugestartet."
+        wait 30 seconds
+        broadcast "§6Der Server wird in §e30 Sekunden §6neugestartet."
+        wait 20 seconds
+        broadcast "§6Der Server wird in §e10 Sekunden §6neugestartet."
+        wait 5 seconds
+        broadcast "§6Der Server wird in §e5 Sekunden §6neugestartet."
+        wait 1 second
+        broadcast "§6Der Server wird in §e4 Sekunden §6neugestartet."
+        wait 1 second
+        broadcast "§6Der Server wird in §e3 Sekunden §6neugestartet."
+        wait 1 second
+        broadcast "§6Der Server wird in §e2 Sekunden §6neugestartet."
+        wait 1 second
+        broadcast "§6Der Server wird in §e1 Sekunde §6neugestartet."
+        wait 1 second
+        kick all players due to "§6Der Server wird neugestartet."
+        stop the server
+        

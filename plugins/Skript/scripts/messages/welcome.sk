@@ -1,0 +1,14 @@
+on join:
+    if {birth::%player%} is not set:
+        set {birth::%player%} to now
+    set {_diff} to difference between now and {birth::%player%}
+
+    set {_head} to "§6Avarizia Networks §8- §cHardcore"
+    if {_diff} is less than 10 minutes:
+        set {_sub} to "§eViel Glück! Du wirst es brauchen."
+    else if {_diff} is less than 1 hour:
+        set {_sub} to "§6Du hast bereits §e%minutes of {_diff}% Minuten §6überlebt."
+    else:
+        set {_sub} to "§6Du hast bereits §e%hours of {_diff}% Stunden §6überlebt."
+
+    send title "%{_head}%" with subtitle "%{_sub}%" to player for 10 seconds
